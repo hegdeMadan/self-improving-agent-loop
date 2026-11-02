@@ -1,0 +1,14 @@
+{
+  "name": "self-improving-agent-loop",
+  "owner": {
+    "name": "Madan Hegde"
+  },
+  "plugins": [
+    {
+      "name": "self-improving-agent-loop",
+      "source": "./",
+      "description": "Inbox to reviewed PR with six agents and a retro that improves the loop after every feature."
+    }
+  ],
+  "description": "The self-improving agent loop: inbox to reviewed PR with six agents and a retro that rewrites its own rules."
+}

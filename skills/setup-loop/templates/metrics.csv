@@ -1,0 +1,1 @@
+run_at_utc,routine,session_url,branch,feature,outcome,state_before,state_after,path,validator_findings,revision_round,block_questions,decisions_left_open,review_rounds,review_findings,tests_added,tests_total,tests_passed,files_changed,lines_added,lines_removed,screens,duration_min,notes,models
