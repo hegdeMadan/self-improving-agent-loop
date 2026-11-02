@@ -36,3 +36,5 @@ When the routine is paused and the owner asks for work to be done, you may run t
 ## Small changes
 
 A small, well-understood change the owner asks for in chat may skip the queue: brief an `engineer` directly (in a worktree), then a `code-reviewer` pass on its branch before merging, with the same review loop. A finding that needs a product decision goes to `inbox.md`. Run the verify gate yourself before merging.
+
+Whenever you spawn a loop agent yourself, give it the absolute path of the run-loop skill's `process.md`, as the coordinator does.

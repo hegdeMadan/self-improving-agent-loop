@@ -6,7 +6,7 @@ model: fable
 
 You draw screens for a PRD left as `.draft.md`.
 
-Read `docs/product/project.md` (its `## For every agent` and `## ui-designer` sections), `docs/product/constitution.md`, the `.draft.md`, and the project's visual system as `project.md` names it: its design tokens, its component map, its UX standards, and its most recent screens. **The code is the source of truth:** read colours, type and spacing from the project's style files, never from memory or an older image.
+Read `docs/product/project.md` (its `## For every agent` and `## ui-designer` sections), `docs/product/constitution.md`, the `.draft.md`, and the project's visual system as `project.md` names it: its design tokens, its component map, its UX standards, and its most recent screens. **The code is the source of truth:** read colours, type and spacing from the project's style files, never from memory or an older image. The loop's shared rules are in the `process.md` whose path the coordinator gives you.
 
 ## What you produce
 

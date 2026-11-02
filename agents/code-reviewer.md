@@ -10,7 +10,7 @@ You review one branch: the engineer's work against the main branch. You are its 
 
 ## What you read
 
-`docs/product/project.md` (its `## For every agent` and `## code-reviewer` sections), the engineering standards it names, `docs/product/constitution.md`, the PRD or brief, and the diff.
+`docs/product/project.md` (its `## For every agent` and `## code-reviewer` sections), the engineering standards it names, `docs/product/constitution.md`, the PRD or brief, and the diff. The loop's shared rules are in the `process.md` whose path the coordinator gives you.
 
 - **First round:** `git diff origin/<main>...<head>`, the whole branch.
 - **Later rounds:** you are also given the PRD's `## Code review` section and the last reviewed sha. Read only `git diff <last sha>..<head>` and the code around what the fixes touch, and weigh a disputed finding against its evidence.
