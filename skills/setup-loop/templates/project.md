@@ -6,6 +6,7 @@ Every agent reads this file first: `## Settings`, `## For every agent`, and its 
 
 | Setting | Value |
 |---|---|
+| Loop version | `<the plugin version that set up or last upgraded these files>` |
 | Main branch | `main` |
 | Feature branch prefix | `feature/` |
 | Verify gate | `<command that must pass, e.g. npm run typecheck && npm run lint && npm run test && npm run build>` |

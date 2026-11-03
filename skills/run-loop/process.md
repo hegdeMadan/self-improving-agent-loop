@@ -23,7 +23,7 @@ docs/product/
 
 ## The read path stays small
 
-The loop writes to the files every run reads: the engineering standards, the decisions log, the feature docs, `project.md`. Unchecked, they grow until every run wades through history (one project's journal reached 375,000 words before a cleanup). Each has a budget in `project.md`, and these rules keep it there as the work happens, so no big cleanup is ever needed:
+The loop writes to the files every run reads: the engineering standards, the decisions log, the feature docs, `project.md`. Unchecked, they grow until every run wades through history (one project's journal reached 375,000 words before a cleanup). Each has a budget in `project.md`, or the default below when `project.md` has no row for it, and these rules keep it there as the work happens, so no big cleanup is ever needed:
 
 - **Decisions log:** newest first, each entry at most about 6 lines. It keeps the entries of the last two weeks, and never fewer than the 15 newest; whoever adds an entry past that moves the older ones, text unchanged, to `history/decisions/YYYY-MM.md` in the same commit.
 - **Structure doc:** where code lives now, one line per folder or file that needs one; a change that adds, moves or removes one updates it in the same branch.
@@ -31,6 +31,26 @@ The loop writes to the files every run reads: the engineering standards, the dec
 - **Engineering standards:** today's rules only. Changing a rule rewrites it in place; the date, the reason and the old wording go to the decisions log, never into the standards.
 - **Generated bulk files** (migration snapshots, lockfiles, build output, data dumps) are denied to `Read` in `.claude/settings.json`, so no search wades through them.
 - **A rewrite to get back under budget changes no rule.** It is its own PR, and its review maps every rule (each must, never, only, number and name) in the old file to its line in the new one. A rule the rewrite would drop or change because it no longer holds goes to the owner as an inbox item before the PR merges; the rewrite never decides it.
+
+## Defaults
+
+A setting `project.md` does not have (a project set up by an older version of the loop) takes its default. Never stop for a missing row; say in the journal that the default was used.
+
+| Setting | Default |
+|---|---|
+| Main branch | `main` |
+| Feature branch prefix | `feature/` |
+| Claim timeout | 40 minutes |
+| Heartbeat | 30 minutes |
+| Validator revisions | 2 |
+| Review rounds | 3 |
+| Widths checked | 390, 1280 |
+| Design folder | `docs/design/` |
+| Word budget per role section | 400 |
+| Engineering standards budget | 3,500 words |
+| Feature docs budget | 12,000 words |
+| Decisions log cap | the last two weeks, and never fewer than the 15 newest entries |
+| Structure doc | none |
 
 ## The queue
 
@@ -95,6 +115,8 @@ Give each agent its task and the files it names, never your own account of the r
 Each agent's default model is the `model:` line in its file. Overrides go in `project.md`. A cheaper model is enough for drawing screens, a narrow revision against one or two findings, and the coordinator's bookkeeping (git, journal, metrics). Writing a new PRD, every validation, every engineer run that writes code, every code review and every retro take the strongest model. Record what ran on what in `metrics.csv`'s `models` column.
 
 ## Commits
+
+A folder under `docs/product/history/` that a step moves or writes into and that does not exist yet is created in the same commit (`mkdir -p`), never a reason to stop.
 
 Stage files by name, never `git add -A` or `git add .`: another agent's worktree inside the repo gets staged as a gitlink. Push with `git push -u origin <branch>`, never with force. Commit messages end with the session's attribution lines.
 

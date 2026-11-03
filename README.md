@@ -64,6 +64,16 @@ north-star slice ─────────────────────
 
 Then in your project: run the `setup-loop` skill. It creates `docs/product/`, fills in what it can from the repo, and asks for the rest.
 
+## Updating
+
+```
+/plugin marketplace update self-improving-agent-loop
+/plugin update self-improving-agent-loop@self-improving-agent-loop
+/reload-plugins
+```
+
+Then run the `setup-loop` skill in each project that uses the loop: it adds only what the new version expects (settings rows, folders, read rules) and changes nothing you or the retro wrote. A project not yet upgraded still works: a missing setting takes the default in `skills/run-loop/process.md`.
+
 ## Running it
 
 - **By hand:** run the `run-loop` skill.
@@ -86,4 +96,4 @@ docs/product/
 
 ## Status
 
-Early (0.2.0). Proven in its original project; not yet run on a second one. Not yet licensed for reuse.
+Early (0.2.1). Proven in its original project; not yet run on a second one. Not yet licensed for reuse.

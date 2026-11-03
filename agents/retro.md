@@ -69,7 +69,7 @@ The same case in two retros in a row means a human gate may be needed there: say
 
 ### Keep the rules lean
 
-Rules only ever growing is the loop's main way to decay. Every fifth learning retro (count the `## Retro after` entries), and whenever a role section of `project.md` passes its word budget (`project.md`, default 400 words a section), consolidate before adding anything:
+Rules only ever growing is the loop's main way to decay. Every fifth learning retro (count the `## Retro after` entries), and whenever a role section of `project.md` passes its word budget (`project.md`, or `process.md`'s default of 400 words a section), consolidate before adding anything:
 
 - merge rules that say the same thing;
 - remove rules whose changes scored `no_effect` or `hurt` twice, and rules the code or a newer rule now makes unnecessary;
@@ -79,7 +79,7 @@ Record each removal or merge in `retro-changes.csv` like any other change, so th
 
 ### Keep the read path small
 
-On every learning retro, measure the files every run reads against their budgets in `project.md` (`wc -w`, and the decisions log's entry dates), and report the numbers under **What happened**.
+On every learning retro, measure the files every run reads against their budgets in `project.md` (or `process.md`'s defaults where it has no row) (`wc -w`, and the decisions log's entry dates), and report the numbers under **What happened**.
 
 - **Decisions log past its cap:** move the older entries to `history/decisions/YYYY-MM.md` yourself, text unchanged. This is a move, not an edit.
 - **Engineering standards or feature docs past their budget:** you do not rewrite them. Add a `next` item to `docs/product/inbox.md`: rewrite the file to its budget, changing no rule, with the rule-by-rule review `process.md` requires.

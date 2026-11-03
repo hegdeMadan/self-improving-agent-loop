@@ -9,7 +9,7 @@ You create the files the loop runs on, fill in what the repo already tells you, 
 
 ## 1. Look before writing
 
-- If `docs/product/project.md` exists, the loop is already set up: say so and stop, unless the owner asks to redo a part.
+- If `docs/product/project.md` exists, the loop is already set up: run **Upgrade** below instead of steps 2 to 6.
 - Read the repo enough to fill settings: the package scripts or build files (the verify gate), the engineering standards (`CLAUDE.md` or similar), a decisions log, a design system or style files, how it deploys (`vercel.json`, a Dockerfile, CI workflows), and its main branch.
 
 ## 2. Create the files
@@ -65,3 +65,15 @@ Both need the plugin available where they run. Record their ids in `project.md`'
 ## 7. Commit
 
 On a branch, `loop/setup`, staging the files by name. Open a PR if the owner wants one. Then tell the owner: what was created, which settings were inferred, and that the first request goes in with the `inbox` skill.
+
+## Upgrade an existing setup
+
+After the plugin is updated, running this skill again brings the project's loop files up to what this version expects. **It only adds what is missing; it never rewrites, reorders or removes what the owner or the retro wrote.**
+
+1. Read the plugin version from `.claude-plugin/plugin.json` two folders above this skill's directory, and the project's `Loop version` row in `docs/product/project.md` (no row: the project was set up by 0.1.0).
+2. **Settings:** compare `project.md`'s `## Settings` table with `templates/project.md`'s. Add each missing row with the value the repo answers or the default in the run-loop skill's `process.md`, marked `(inferred)` or `(default)`. Add each missing section heading of the template, empty. Set `Loop version` to this version.
+3. **Files and folders:** create every file and folder step 2 of the setup lists that does not exist (with a `.gitkeep` in an empty folder). Add to `history/README.md` each line of `templates/history-README.md` it lacks.
+4. **Read deny rules:** add any generated bulk file step 2 names that `.claude/settings.json` does not already deny.
+5. **Move what the new rules move:** if the project has a UI, `git mv` the screen folders of all but the three most recently finished features to `docs/product/history/design/`. If the decisions log is past its cap, move its older entries, text unchanged, to `history/decisions/YYYY-MM.md`.
+6. **Measure, do not rewrite:** the engineering standards and the feature docs against their budgets. Any over budget: offer an inbox item to rewrite it to budget under the rule-preservation review (`process.md`).
+7. Commit on a branch, `loop/upgrade-<version>`, staging files by name, and open a PR if the owner wants one. Report each row, file, folder, rule and move added, and anything over budget. Nothing to add: say the project is already up to date.
