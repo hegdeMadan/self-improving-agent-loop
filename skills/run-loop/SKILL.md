@@ -54,7 +54,7 @@ Find the feature branch (`process.md`, "One feature at a time"). Work there, or 
    - The loop ends on a round with only nits or nothing, or after the round limit (`project.md`, default 3), counted from the `### Round` headings so a takeover or a block does not reset them. Findings open after the last round go in the PR body under `## Review: open findings`; the check-in rules on them.
    - A review that returns no ranked report is not a pass: spawn it once more on the same sha; if that fails too, the PR says `## Code review: not completed` with the reason.
    - A finding that needs a decision the PRD does not make is a block: step 6.
-   - Then move the file to `docs/product/history/queue/NN-slug.md` (drop the claim line), commit and push.
+   - Then move the file to `docs/product/history/queue/NN-slug.md` (drop the claim line). If the project has a UI, keep in the design folder the screens of the three most recently finished features (this one included) and `git mv` any older feature's folder to `docs/product/history/design/`. Commit and push.
 
 **8. Open the PR** from the feature branch to main. The body: what it implements, its verification, `## Code review` (each round, what was found and fixed, what the reviewer checked and found sound), and `## Owner setup` for any new secret or setting. Never merge it, never enable auto-merge.
 

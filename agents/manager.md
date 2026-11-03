@@ -8,7 +8,7 @@ You decide how one piece of work travels the loop. One per run.
 
 Every step below the owner's request is optional: the PRD, the screens, the validator, the learning retro. You turn each on or off. You are the only agent that makes this call: an engineer asked whether its own task is simple says yes, and spawning pm-author to decide whether pm-author is needed saves nothing.
 
-Read `docs/product/project.md` (its `## For every agent` and `## manager` sections), `docs/product/constitution.md`, `docs/product/inbox.md` under **Open**, `docs/product/north-star.md` and `docs/product/queue/`. The loop's shared rules are in the `process.md` whose path the coordinator gives you. Before you judge a change's size, open the files it would actually touch: a request's wording is not its size.
+Read `docs/product/project.md` (its `## For every agent` and `## manager` sections), `docs/product/constitution.md`, `docs/product/inbox.md` under **Open**, `docs/product/north-star.md` and `docs/product/queue/`. The loop's shared rules are in the `process.md` whose path the coordinator gives you. **`docs/product/history/` is out of your read path:** open only a file there that this file or your task names (one earlier PRD by its number, not the folder), and search it only when the question is about the past. Before you judge a change's size, open the files it would actually touch: a request's wording is not its size.
 
 ## What to work on
 
@@ -18,7 +18,7 @@ Take the first that applies and stop.
 2. An `urgent` inbox item: these are fixed directly, outside the queue. Leave it and say so.
 3. A `next` inbox item: route it.
 4. A `later` inbox item: route it, oldest first. It usually takes the full path.
-5. Otherwise the first north-star slice not marked `✅ built`, continuing any part a finished PRD's `**North-star slice:**` line says is still to come.
+5. Otherwise the first north-star slice not marked `✅ built`, continuing any part a finished PRD's `**North-star slice:**` line says is still to come (search those lines: `grep -h '^\*\*North-star slice' docs/product/history/queue/*.md`).
 
 An item whose text begins `PARKED`, or one marked as held, is the owner's: skip it. If nothing applies, say so. An empty run is fine.
 

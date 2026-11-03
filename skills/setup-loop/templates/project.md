@@ -13,6 +13,7 @@ Every agent reads this file first: `## Settings`, `## For every agent`, and its 
 | Engineering standards | `CLAUDE.md` |
 | Decisions log | `DECISIONS.md` (short; older entries searched, not read) |
 | Feature docs | `<file that says what the product does today, or "none">` |
+| Structure doc | `<file that says where code lives, or "none">` |
 | Has a UI | `<yes / no>` |
 | Widths checked | `390, 1280` |
 | Design folder | `docs/design/` |
@@ -23,6 +24,9 @@ Every agent reads this file first: `## Settings`, `## For every agent`, and its 
 | Validator revisions | 2 |
 | Review rounds | 3 |
 | Word budget per role section | 400 |
+| Engineering standards budget | 3,500 words |
+| Feature docs budget | 12,000 words |
+| Decisions log cap | the last two weeks, and never fewer than the 15 newest entries |
 | Owner's time zone | `<e.g. Asia/Kolkata>` |
 | Model overrides | `<role: model, or "none">` |
 

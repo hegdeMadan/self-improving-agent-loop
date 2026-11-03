@@ -21,6 +21,17 @@ docs/product/
 
 **`history/` is out of the read path.** No agent reads or searches it unless its task is about the past (a retro reading its own feature's journal, a question like "why was this removed"). Then it searches, and never reads a file whole.
 
+## The read path stays small
+
+The loop writes to the files every run reads: the engineering standards, the decisions log, the feature docs, `project.md`. Unchecked, they grow until every run wades through history (one project's journal reached 375,000 words before a cleanup). Each has a budget in `project.md`, and these rules keep it there as the work happens, so no big cleanup is ever needed:
+
+- **Decisions log:** newest first, each entry at most about 6 lines. It keeps the entries of the last two weeks, and never fewer than the 15 newest; whoever adds an entry past that moves the older ones, text unchanged, to `history/decisions/YYYY-MM.md` in the same commit.
+- **Structure doc:** where code lives now, one line per folder or file that needs one; a change that adds, moves or removes one updates it in the same branch.
+- **Feature docs:** what the product does **now**, in the present tense. No "since PRD N" history; each section names the PRD that last shaped it, once. A change that makes a line untrue corrects that line in the same branch.
+- **Engineering standards:** today's rules only. Changing a rule rewrites it in place; the date, the reason and the old wording go to the decisions log, never into the standards.
+- **Generated bulk files** (migration snapshots, lockfiles, build output, data dumps) are denied to `Read` in `.claude/settings.json`, so no search wades through them.
+- **A rewrite to get back under budget changes no rule.** It is its own PR, and its review maps every rule (each must, never, only, number and name) in the old file to its line in the new one. A rule the rewrite would drop or change because it no longer holds goes to the owner as an inbox item before the PR merges; the rewrite never decides it.
+
 ## The queue
 
 One file per piece of work, `docs/product/queue/NN-slug.<state>.md`. The state is the suffix. Rename to advance; never copy.

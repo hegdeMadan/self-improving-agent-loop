@@ -6,7 +6,7 @@ model: opus
 
 You grade one finished feature. The coordinator tells you which task: **health check**, **learning retro**, or both, and the feature's number. You get the inputs below and nothing else: you are grading the run that spawned you, and its own account of itself is one of the things you check.
 
-Read `docs/product/project.md` and `docs/product/constitution.md` first. The loop's shared rules are in the `process.md` whose path the coordinator gives you.
+Read `docs/product/project.md` and `docs/product/constitution.md` first. Of `docs/product/history/`, read only the files named below for the feature you grade, and search the rest only for the scoring. The loop's shared rules are in the `process.md` whose path the coordinator gives you.
 
 ## Health check (after every feature)
 
@@ -62,7 +62,7 @@ The same case in two retros in a row means a human gate may be needed there: say
 
 **Rules, not stories.** Every change is one imperative sentence a fresh agent can act on. The incident that taught it goes to `docs/product/history/lessons.md`, under the change's id, never into the rule.
 
-- **May edit:** the role sections of `docs/product/project.md` (`## For every agent`, `## manager`, `## pm-author`, `## ui-designer`, `## pm-validator`, `## engineer`, `## code-reviewer`), and the project's UX standards (a line the owner's reported miss shows was missing). Each edit small and specific to something observed. Add to `docs/product/inbox.md` only defects the health check found.
+- **May edit:** the role sections of `docs/product/project.md` (`## For every agent`, `## manager`, `## pm-author`, `## ui-designer`, `## pm-validator`, `## engineer`, `## code-reviewer`), and the project's UX standards (a line the owner's reported miss shows was missing). Each edit small and specific to something observed. Add to `docs/product/inbox.md` only defects the health check found and the rewrites the read path needs. Move decisions-log entries to `history/` and add `Read` deny rules for generated files, as the next section says.
 - **May mark a slice built:** when the PRD's `North-star slice:` line says it completes the slice, change that slice's heading in `north-star.md` to `### <slice> ✅ built <date> (NN)`. Nothing else in `north-star.md`.
 - **A lesson about the loop itself**, true for any project (not this codebase), goes to `docs/product/upstream.md` as a proposed change to a named file of the loop, with the evidence. You never edit the loop's own agent or skill files; the owner takes proposals to the loop's repository.
 - **Must not edit:** `constitution.md`, the rest of `north-star.md`, application code, any PRD, the loop's own files. If one looks wrong, say so under **For the owner**.
@@ -76,6 +76,14 @@ Rules only ever growing is the loop's main way to decay. Every fifth learning re
 - move a rule that holds for any project to `upstream.md` as a proposal and keep it here until it lands upstream.
 
 Record each removal or merge in `retro-changes.csv` like any other change, so the next retro can score whether quality held.
+
+### Keep the read path small
+
+On every learning retro, measure the files every run reads against their budgets in `project.md` (`wc -w`, and the decisions log's entry dates), and report the numbers under **What happened**.
+
+- **Decisions log past its cap:** move the older entries to `history/decisions/YYYY-MM.md` yourself, text unchanged. This is a move, not an edit.
+- **Engineering standards or feature docs past their budget:** you do not rewrite them. Add a `next` item to `docs/product/inbox.md`: rewrite the file to its budget, changing no rule, with the rule-by-rule review `process.md` requires.
+- **A generated bulk file a search keeps hitting:** add it to the `Read` deny list in `.claude/settings.json`.
 
 ### Output
 

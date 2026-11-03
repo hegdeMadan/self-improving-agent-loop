@@ -6,7 +6,7 @@ model: opus
 
 You implement one PRD or brief per run.
 
-Read `docs/product/project.md` (its `## For every agent` and `## engineer` sections), `docs/product/constitution.md`, the project's engineering standards (`project.md` names them; usually `CLAUDE.md`) and its short decisions log. The loop's shared rules are in the `process.md` whose path the coordinator gives you. For the area the work touches, search (never read whole) the older decisions, the feature docs and the structure docs.
+Read `docs/product/project.md` (its `## For every agent` and `## engineer` sections), `docs/product/constitution.md`, the project's engineering standards (`project.md` names them; usually `CLAUDE.md`) and its short decisions log. The loop's shared rules are in the `process.md` whose path the coordinator gives you. **`docs/product/history/` is out of your read path:** open only a file there that this file or your task names (one earlier PRD by its number, not the folder), and search it only when the question is about the past. For the area the work touches, search (never read whole) the feature docs and the structure doc (`project.md` names both).
 
 ## Claiming
 
@@ -76,7 +76,7 @@ Your gate is followed by code review, and a local build does not prove the deplo
 
 ## Finishing
 
-Commit and push to the feature branch. **Stage files by name**, never `git add -A`. Record a new dependency or a non-obvious choice in the decisions log. When your change makes a line of the engineering standards or the feature docs untrue, correct it in the same branch. Do not open or merge the PR.
+Commit and push to the feature branch. **Stage files by name**, never `git add -A`. Record a new dependency or a non-obvious choice in the decisions log, at its top; if that takes it past its cap, move the older entries to `history/decisions/` in the same commit (`process.md`, "The read path stays small"). When your change makes a line of the engineering standards, the feature docs or the structure doc untrue (a new file or folder included), correct that line in place, in the present tense: the history goes to the decisions log, never into the standards or the feature docs. Do not open or merge the PR.
 
 Append to `docs/product/history/journal/NN-slug.md`, before setting `built`:
 

@@ -27,7 +27,9 @@ Copy from this skill's `templates/` directory:
 | `retro-changes.csv` | `docs/product/retro-changes.csv` |
 | `history-README.md` | `docs/product/history/README.md` |
 
-Also create `docs/product/queue/NEXT` containing `1` (or the next number after any existing numbered specs), and empty `docs/product/history/queue/`, `history/journal/` (each with a `.gitkeep`), `history/inbox-done.md` and `history/lessons.md`.
+Also create `docs/product/queue/NEXT` containing `1` (or the next number after any existing numbered specs), and empty `docs/product/history/queue/`, `history/journal/`, `history/decisions/`, `history/design/` (each with a `.gitkeep`), `history/inbox-done.md` and `history/lessons.md`.
+
+Add a `Read` deny rule to `.claude/settings.json` (create it, or merge into it) for every generated bulk file the repo holds: migration snapshots, lockfiles, build output, data dumps (for example `"permissions": {"deny": ["Read(/drizzle/meta/**)"]}`). Name each in the summary.
 
 ## 3. Fill in `project.md`
 
@@ -44,6 +46,8 @@ Fill every setting the repo answers, and mark each you inferred `(inferred)` so 
 Ask the owner for one paragraph on what the product is for, the one number that says it works, and the first two or three slices. Write them into `north-star.md` in their words. Leave the constitution's rules empty unless they state some: rules are added when something goes wrong.
 
 ## 5. Engineering standards
+
+If the standards file, the decisions log or the feature docs already pass their budgets, say so and offer an inbox item to rewrite them to budget, under the rule-preservation review in the run-loop skill's `process.md`.
 
 If the project has no engineering standards file, say so: the engineer and the reviewer check against it. Offer to draft a short one from the code's existing patterns; do not write it without a yes.
 
