@@ -1,6 +1,6 @@
 {
   "name": "self-improving-agent-loop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A product team of Claude agents that carries each request from an inbox to a reviewed PR, one feature at a time, and rewrites its own rules after every feature from what it measured.",
   "author": { "name": "Madan Hegde" },
   "keywords": ["agents", "pipeline", "prd", "code-review", "retro", "autonomous"]

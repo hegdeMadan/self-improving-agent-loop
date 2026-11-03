@@ -86,4 +86,4 @@ docs/product/
 
 ## Status
 
-Early (0.1.0). Proven in its original project; not yet run on a second one. Not yet licensed for reuse.
+Early (0.2.0). Proven in its original project; not yet run on a second one. Not yet licensed for reuse.
