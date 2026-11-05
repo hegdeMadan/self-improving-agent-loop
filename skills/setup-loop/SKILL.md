@@ -57,10 +57,10 @@ Add one line to the standards file (or create `CLAUDE.md` with it): *When the ow
 
 A plugin cannot create scheduled routines. Tell the owner how, and offer to create them if this session has routine tools:
 
-- **Loop:** hourly (e.g. `5 * * * *` UTC), this repo, prompt `Run the run-loop skill.`, with the strongest model.
-- **Check-in:** hourly, offset from the loop (e.g. `45 * * * *`), prompt `Run the check-in skill.`. It is the only one that merges and the only one that can start the loop early, so it needs a session with the repo, GitHub and routine tools.
+- **Loop:** no schedule, this repo, prompt `Run the run-loop skill.`, with the strongest model. The check-in starts it; a schedule of its own would let two runs take the same work.
+- **Check-in:** hourly (e.g. `45 * * * *` UTC), prompt `Run the check-in skill.`. It is the only one that merges and the only one that starts the loop, so it needs a session with the repo, GitHub and routine tools.
 
-Both need the plugin available where they run. Record their ids in `project.md`'s `## Routines` table once created.
+Both need the loop's files where they run: the plugin where plugins load, otherwise a prompt that clones this loop (the run-loop skill, *In a cloud routine*). Record their ids in `project.md`'s `## Routines` table once created.
 
 ## 7. Commit
 
@@ -75,5 +75,6 @@ After the plugin is updated, running this skill again brings the project's loop 
 3. **Files and folders:** create every file and folder step 2 of the setup lists that does not exist (with a `.gitkeep` in an empty folder). Add to `history/README.md` each line of `templates/history-README.md` it lacks.
 4. **Read deny rules:** add any generated bulk file step 2 names that `.claude/settings.json` does not already deny.
 5. **Move what the new rules move:** if the project has a UI, `git mv` the screen folders of all but the three most recently finished features to `docs/product/history/design/`. If the decisions log is past its cap, move its older entries, text unchanged, to `history/decisions/YYYY-MM.md`.
-6. **Measure, do not rewrite:** the engineering standards and the feature docs against their budgets. Any over budget: offer an inbox item to rewrite it to budget under the rule-preservation review (`process.md`).
-7. Commit on a branch, `loop/upgrade-<version>`, staging files by name, and open a PR if the owner wants one. Report each row, file, folder, rule and move added, and anything over budget. Nothing to add: say the project is already up to date.
+6. **The routines:** if the loop's routine has a schedule of its own, tell the owner it should have none now (step 6), and offer to remove it.
+7. **Measure, do not rewrite:** the engineering standards and the feature docs against their budgets. Any over budget: offer an inbox item to rewrite it to budget under the rule-preservation review (`process.md`).
+8. Commit on a branch, `loop/upgrade-<version>`, staging files by name, and open a PR if the owner wants one. Report each row, file, folder, rule and move added, and anything over budget. Nothing to add: say the project is already up to date.

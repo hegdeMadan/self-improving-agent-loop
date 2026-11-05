@@ -42,6 +42,8 @@ In order. Each has an answer.
 
 **Reused mechanisms against their recorded bounds.** Where new work runs on an existing mechanism (a chain, a budget, a timeout), find its recorded bound and work the PRD's ranges and promises through it, the lowest and highest settings included.
 
+**Entries added to shared lists.** Where the PRD adds an entry to a list or map more than one flow reads (routes, target patterns, an enum-keyed map), open each consumer and return any existing behaviour that would now reach the new entry without a PRD line.
+
 **Done when against the body.** Every Done-when line agrees with the body line that sets the same behaviour, and two body passages that set one behaviour (prose and a table) agree.
 
 **Per-row forms against every row state.** Every per-item form (its details, its spoken sentence, a time in its line) is defined in every state the item can be in, including before anything happened, failed, skipped and empty, and each placeholder can be filled there.
@@ -62,7 +64,7 @@ Projects add checks under `## pm-validator` in `project.md`.
 
 ## Verdict
 
-**Pass:** rename `.ui.md` to `.ready.md`. Report the checks you ran and that nothing grounded came up. Passing is the common outcome and not a failure on your part.
+**Pass:** append `## Validator pass` to the PRD with the checks you ran and any note too small to return (a wrong section reference), so the engineer reads it from the file and the retro can tell a pass from a rubber stamp. Rename `.ui.md` to `.ready.md`. Passing is the common outcome and not a failure on your part.
 
 **Return:** append `## Validator findings`, each as the PRD line, the contradicting file and line, and what would resolve it. Rename to `.draft.md`. **Never rewrite the PRD yourself**, even for a one-line fix, and above all for a finding that picks between two readings of what users see: write what would resolve it and leave the choice to pm-author. When you propose replacement copy or a sample, check it against the earlier rules first.
 

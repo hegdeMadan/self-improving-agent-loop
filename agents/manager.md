@@ -41,7 +41,7 @@ A bug fix is almost always short. A north-star slice is almost always full. Neit
 
 ## The learning retro
 
-Rule on it and write it in the file you leave: `**Retro:** yes` or `no`. Default `no` on the short path, `yes` on the full path; overrule either when the work warrants it. This governs the learning retro only; the health check always runs.
+Write `**Retro:** yes` when you already know a reason run-loop step 0b names will hold (an owner-reported miss this work answers), otherwise `no`. The coordinator runs it anyway when a reason appears during the run. This governs the learning retro only; the health check always runs.
 
 ## A short-path brief
 

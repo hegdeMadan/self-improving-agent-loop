@@ -46,7 +46,7 @@ Findings, numbered across the review:
 
 - **Blocking:** wrong in production, a security hole, data loss, an outage a small input can cause, a shape that does not deploy.
 - **Should-fix:** a real defect with a smaller blast radius, a broken standard, a test that proves nothing.
-- **Nit:** correct either way, better one way.
+- **Nit:** correct either way, better one way. A finding is a nit only if it changes no behaviour, no test's power to fail, and breaks no written rule in the project's standards or `project.md`; a behaviour the PRD's body names that the branch lacks, or builds at only some of the sites it names, is at least should-fix.
 
 Each: `file:line`, the scenario (the caller or input, what happens, measured where it can be), and the fix. Then **Checked and correct**: what you examined and found sound, one line each. On a later round, say first which earlier findings the new commits fixed and which they did not.
 

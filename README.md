@@ -25,18 +25,18 @@ north-star slice ─────────────────────
 
 | Agent | Does |
 |---|---|
-| `manager` | picks the next work; rules short path (writes the brief itself) or full path; rules whether a retro follows |
+| `manager` | picks the next work; rules short path (writes the brief itself) or full path |
 | `pm-author` | writes the PRD with an edge-case table; revises against findings; answers the engineer's blocks in the same run |
 | `ui-designer` | draws every state at every width as PNGs (projects with a UI) |
 | `pm-validator` | checks the PRD against the code: every finding cites a PRD line and a contradicting file line |
 | `engineer` | claims, tests first, builds, runs the verify gate; **blocks rather than guesses** |
 | `code-reviewer` | adversarial, read-only; reports only what it reproduced, ranked blocking / should-fix / nit |
-| `retro` | health check of the live product after every feature; learning retro that scores the last retro's changes and writes new rules |
+| `retro` | health check of the live product after every feature; learning retro, only when something failed, that scores the last retro's changes, writes new rules and grades the loop itself |
 
 | Skill | Does |
 |---|---|
 | `run-loop` | one pass of the loop: grade the last feature, then carry one piece of work to a reviewed PR |
-| `check-in` | the monitor: review and merge PRs, restart the loop after a merge, spot stalls, report what matters |
+| `check-in` | the monitor and the loop's only starter: review and merge PRs, start the loop after a merge, apply the retro's machinery changes, spot stalls, relay what the owner needs to see |
 | `inbox` | record a request with a severity instead of editing code |
 | `setup-loop` | create the loop's files in a project and fill in its settings |
 
@@ -44,8 +44,9 @@ north-star slice ─────────────────────
 
 - **Every retro change is a hypothesis.** It goes in `retro-changes.csv` with the metric that should move; the next retro scores it `helped`, `no_effect`, `hurt` or `untestable`.
 - **Lessons are rules, not stories.** Each is one sentence in the right role's section of the project's `project.md`; the incident behind it goes to `history/lessons.md`.
-- **Rules are pruned, not only added.** Every fifth retro, or when a section passes its word budget, the retro merges duplicates and removes rules that scored `no_effect` or `hurt` twice.
-- **What holds for every project goes upstream.** The retro proposes it in the project's `upstream.md`; the owner brings it here as a PR. That is also how contributions arrive.
+- **A retro needs a reason.** It runs after a blocking finding, a repeat of a lesson already learned, a miss the owner reported, or a role section over budget; otherwise the journal records it as skipped. A retro with nothing to explain only adds rules.
+- **Rules are pruned, not only added.** When a section passes its word budget, the retro merges duplicates and removes rules that scored `no_effect` or `hurt` twice.
+- **Fixes are made, not filed.** A fix to how a role works goes into `project.md`; a fix to how runs start or merge is a `Machinery change` the check-in applies to the routine prompt. What holds for every project still comes here as a PR, written by a person.
 
 ## Principles
 
@@ -77,7 +78,7 @@ Then run the `setup-loop` skill in each project that uses the loop: it adds only
 ## Running it
 
 - **By hand:** run the `run-loop` skill.
-- **Unattended:** two scheduled routines, an hourly loop (`Run the run-loop skill.`) and an hourly check-in offset from it (`Run the check-in skill.`). The routines need the plugin available where they run; `setup-loop` explains the steps.
+- **Unattended:** two routines: the loop (`Run the run-loop skill.`), with no schedule of its own, and an hourly check-in (`Run the check-in skill.`) that is its only starter, so two runs never take the same work. `setup-loop` explains the steps, and the run-loop skill's *In a cloud routine* covers routines where plugins do not load.
 
 ## In a project
 
@@ -90,7 +91,7 @@ docs/product/
   queue/            work in flight, and NEXT
   metrics.csv       one row per run
   retro-changes.csv every retro change and its score
-  upstream.md       proposed changes to this loop
+  upstream.md       proposed changes to this loop, written by a person
   history/          finished PRDs, journals, inbox-done, lessons
 ```
 

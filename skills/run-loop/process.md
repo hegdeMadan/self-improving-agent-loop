@@ -15,7 +15,7 @@ docs/product/
   queue/            work in flight only, plus NEXT (the next free number)
   metrics.csv       one row per run
   retro-changes.csv one row per change a retro made, scored by the next retro
-  upstream.md       proposed changes to the loop itself, for the plugin's repo
+  upstream.md       proposed changes to the loop itself, written by a person (the retro fixes the loop in project.md or a Machinery change instead)
   history/          finished work: queue/, journal/, inbox-done.md, lessons.md
 ```
 
@@ -76,7 +76,7 @@ The manager rules on every piece of work before anything starts.
 - **Short path:** the manager writes a brief as `.ready.md`; the engineer builds it, code-reviewer reviews it. No PRD, no screens, no validator.
 - **Full path:** pm-author writes a PRD, ui-designer draws it (when the project has a UI and the owner has not drawn it), pm-validator checks it, the engineer builds it, code-reviewer reviews it.
 
-The manager also rules `**Retro:** yes` or `no` (the learning retro). The health check runs after every finished piece of work whatever the ruling.
+The learning retro runs only for a reason (run-loop step 0b). The health check runs after every finished piece of work.
 
 ## One feature at a time
 
@@ -86,6 +86,8 @@ The manager also rules `**Retro:** yes` or `no` (the learning retro). The health
 - The routine never merges and never pushes to main. Every PR targets main; the check-in merges.
 
 ## Never run the same work twice
+
+One starter only: the check-in starts the routine, and the routine has no schedule of its own. A claim protects only a `.building.md`, so two runs started minutes apart can both route, draft and validate the same work.
 
 A `.building.md` carries its claim in its first line:
 
