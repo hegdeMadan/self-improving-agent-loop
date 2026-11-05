@@ -42,7 +42,8 @@ Rename to `.blocked.md` and exit. pm-author answers in the same run; a block cos
 Block on:
 
 - anything that changes what a user sees that neither the PRD nor a screen shows: a word of copy, a 0/1/many form, which of several items shows, whether an element appears, which of two reasons or failure messages a row shows. Matching wording the code already uses for the same thing settles it; inventing a new form does not;
-- extending a PRD rule to an input or failure it does not name (an empty value, a different shape, a service down during another action): that is inventing, not matching;
+- extending a PRD rule to an input or failure it does not name (an empty value, a different shape, a service down during another action), or applying one to fewer inputs, lists or sites than its words name: that is inventing, not matching;
+- a Done-when test you cannot make assert the claim it names (a grader, fixture or harness that cannot see it);
 - two PRD lines that say different things about the same part, or a screen that draws a part otherwise than the PRD's words: quote both;
 - a phrase you would read as something other than its words: build to the words, or block quoting the phrase and your reading;
 - a design that falls short of something the PRD promises the user (a chain that stops before the limit the PRD allows): quote the promise and the cause;
@@ -50,7 +51,7 @@ Block on:
 
 Do not block on: implementation choices that are yours (library, file layout, naming, structure), or a north-star open question that has a default (build to it and note it).
 
-After a block is answered, and for any `## Unresolved after N revisions` findings, run the same check again. **If you would write "user-visible, listed for review" or "worth a human look" beside a decision, it was a block question.**
+After a block is answered, and for any `## Unresolved after N revisions` findings, run the same check again. **If you would write "user-visible, listed for review" or "worth a human look" beside a decision, it was a block question.** So is any **Unsure** line about what a user sees: block on it before `built`, never only journal it.
 
 ## Implementing
 
@@ -64,6 +65,8 @@ A `.ready.md` may be a short-path brief (`**Path:** short`): build it the same w
 ## Verifying
 
 Run the verify gate (`project.md`) and any integration tests it names. Check every UI change at each width `project.md` lists against the screens, setting the width with device emulation, not a cropped wider window. At every breakpoint the PRD defines, measure at its lowest value that nothing is clipped (`scrollWidth` against `clientWidth`).
+
+Give every test of a refusal an input that breaks only the rule it names, and every test of an order between two checks one input that fails both with different outcomes. Before handing to review, weaken that rule (or move the later check first) and confirm the test fails.
 
 Then check the work against the PRD once, deliberately: every Done-when line, every state, every constraint. Fix the gaps; list what you could not complete. **Tests passing is not done: they pass against your reading of the spec.**
 
@@ -96,6 +99,6 @@ Set the phase to `built` and push. Report what changed, what you could not compl
 
 ## Review findings
 
-When spawned again with code-review findings: set the phase to `building` and push, keep the heartbeat, fix each blocking and should-fix finding and each nit that is plainly correct, and answer one you can show is wrong with the evidence. A finding that needs a decision the PRD does not make is a block. Rerun the gate, push, set `built`, and add the round under **Review** in your journal entry.
+When spawned again with code-review findings: set the phase to `building` and push, keep the heartbeat, fix each blocking and should-fix finding (nits are left, as listed), and answer one you can show is wrong with the evidence. A finding that needs a decision the PRD does not make is a block. Rerun the gate, push, set `built`, and add the round under **Review** in your journal entry.
 
 **Never drop a guarantee.** A test assertion you remove (because the part it counted is gone) keeps its claim: assert the same claim through something that still exists, or block naming it.

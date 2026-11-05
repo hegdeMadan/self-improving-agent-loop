@@ -27,8 +27,13 @@ Find the feature branch (`process.md`, "One feature at a time"). Work there, or 
 ## Steps
 
 **0. Grade the last finished feature, before any new work.**
-   - 0a. **Health check**, always, when its journal has no `## Health after NN`: spawn `retro` with the health-check task, the feature's number, and nothing else.
-   - 0b. **Learning retro**, when its header says `**Retro:** yes` (or has no `Retro:` line) and its journal has no `## Retro after NN`: spawn `retro` with the learning task and the feature's number. A fresh agent, given only what `retro`'s file names: never your account of the run.
+   - 0a. **Health check**, always, when its journal has no `## Health after NN`: spawn `retro` with the health-check task, the feature's number, and nothing else. When `project.md`'s `## Health check` defines none, spawn nothing: write `## Health after NN — not checked: project defines no health check` yourself.
+   - 0b. **Learning retro**, when its journal has no `## Retro after NN` and one of these reasons holds; otherwise write `## Retro after NN — skipped: no reason`, naming the reasons checked:
+     - code review raised a blocking finding;
+     - a review should-fix or validator finding is of a kind already in `history/lessons.md` or covered by a written rule in `project.md` (an existing rule failed);
+     - the owner reported a miss since the last retro;
+     - a role section of `project.md` is over its word budget (consolidate first).
+     Spawn `retro` with the learning task and the feature's number: a fresh agent, given only what `retro`'s file names, never your account of the run.
    - If the stop condition is now met, append the run summary and stop.
 
 **1. Manager.** Spawn `manager`. It picks the next piece of work and rules on its path and retro. If it reports nothing to do, record `noop` and stop. New work starts its branch from main.
@@ -50,7 +55,7 @@ Find the feature branch (`process.md`, "One feature at a time"). Work there, or 
 
 **7. Code review, before any PR.** Only once the verify gate passes; if it fails and the engineer could not fix it, leave `.building.md`, push, report, stop. Set the phase to `review`, push, and spawn `code-reviewer` with the PRD, the head sha and this checkout's path, nothing else.
    - After each round, append to the `.building.md` under `## Code review`: `### Round N · reviewed <sha>`, the findings verbatim, and the engineer's reply to each (fixed in `<sha>`, or disputed with evidence). Push.
-   - Blocking or should-fix findings → spawn the engineer with them (and the nits). It fixes, reruns the gate, pushes. Set `review` again and spawn code-reviewer on the new commits alone, given the `## Code review` section and the last reviewed sha.
+   - Blocking or should-fix findings → spawn the engineer with them. Nits are not fixed and never start a round: list them in the journal as left. It fixes, reruns the gate, pushes. Set `review` again and spawn code-reviewer on the new commits alone, given the `## Code review` section and the last reviewed sha.
    - The loop ends on a round with only nits or nothing, or after the round limit (`project.md`, default 3), counted from the `### Round` headings so a takeover or a block does not reset them. Findings open after the last round go in the PR body under `## Review: open findings`; the check-in rules on them.
    - A review that returns no ranked report is not a pass: spawn it once more on the same sha; if that fails too, the PR says `## Code review: not completed` with the reason.
    - A finding that needs a decision the PRD does not make is a block: step 6.
@@ -61,6 +66,13 @@ Find the feature branch (`process.md`, "One feature at a time"). Work there, or 
 **9. Grade it now**, so the PR is mergeable when it opens: step 0a always, 0b when owed. Step 0 of the next run is the backstop.
 
 **10. Record.** Append to `docs/product/history/journal/NN-slug.md`: which work, the path and retro ruling, what the validator raised, what the engineer decided alone, blocks and how they were answered, each review round. Append this run's `metrics.csv` row. Commit and push.
+
+## In a cloud routine
+
+- Plugins don't load in cloud sessions: the routine prompt clones this loop and reads its files by path, and spawns each role as a general-purpose agent whose instructions are its agent file.
+- The GitHub proxy rejects GraphQL, so `gh pr create` and `gh pr merge` fail: open and read PRs through REST or the session's GitHub tools.
+- Routines push to `claude/` branches unless told otherwise: the prompt names the feature branch prefix and forbids moving work to a `claude/` branch.
+- Before any agent runs, prepare what the verify gate needs (the pinned runtime, private package access, a local database for the tests) and never relax a pin to get past one. If one cannot be had, change nothing, report it and stop: never skip a test for a missing service.
 
 ## Every run, whatever happened
 

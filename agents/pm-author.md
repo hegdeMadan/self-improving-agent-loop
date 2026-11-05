@@ -110,7 +110,7 @@ Answer every row the feature touches. These are where specs most often leave the
 | Reused mechanisms | the recorded bound (decisions log, bugs log, module header) and every range the PRD promises worked through it, the lowest setting included |
 | Replaced sources | every reader of the old source, and which source each reads now |
 | Narrowed records | every reader of a record whose scope the PRD narrows, and what each reads now |
-| New kinds in old flows | every line of the earlier flow the new kind reaches, with its words for it |
+| New kinds in old flows | every line and every return of the earlier flow's function the new kind reaches (by file and line), with its words or outcome for the new kind; where an existing line already speaks of the same setting, which one shows |
 | Stored status | when code writes each status the PRD reads, and what a row a dead process left shows |
 | "Unchanged" claims | checked against the code; anything added named as a change |
 | Strings an existing rule builds | written as the rule builds them today (check the config and function) |
@@ -121,6 +121,8 @@ Answer every row the feature touches. These are where specs most often leave the
 | Background runs | how it starts in production, what the host must allow, how a refused start is recorded and shown |
 | Free text read by pattern | each edge form (joined, spaced, qualifier elsewhere, a kind the rule does not name) and its outcome |
 | Outside payload fields | for every field read: absent, repeated, present but not in its form |
+| Replaced stored items | for each stored property (the name's spelling included), whether the replacement keeps the stored value or saves the sent one |
+| Stored values past new bounds | what a stored value outside the new contract's bounds (kind, length, count) shows and sends; a cap and its words for every line that lists stored items |
 
 Projects add rows under `## pm-author` in `project.md`.
 
