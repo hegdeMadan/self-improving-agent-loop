@@ -15,7 +15,7 @@ docs/product/
   queue/            work in flight only, plus NEXT (the next free number)
   metrics.csv       one row per run
   retro-changes.csv one row per change a retro made, scored by the next retro
-  upstream.md       proposed changes to the loop itself, for the plugin's repo
+  upstream.md       proposed changes to the loop itself, written by a person (the retro fixes the loop in project.md or a Machinery change instead)
   history/          finished work: queue/, journal/, inbox-done.md, lessons.md
 ```
 
@@ -88,7 +88,6 @@ The learning retro runs only for a reason (run-loop step 0b). The health check r
 ## Never run the same work twice
 
 One starter only: the check-in starts the routine, and the routine has no schedule of its own. A claim protects only a `.building.md`, so two runs started minutes apart can both route, draft and validate the same work.
-
 
 A `.building.md` carries its claim in its first line:
 

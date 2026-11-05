@@ -35,7 +35,7 @@ Every agent reads this file first: `## Settings`, `## For every agent`, and its 
 
 | Routine | Id | Schedule | State |
 |---|---|---|---|
-| Loop (runs `run-loop`) | `<id>` | `<cron, UTC>` | `<enabled / paused>` |
+| Loop (runs `run-loop`) | `<id>` | none: the check-in starts it | `<enabled / paused>` |
 | Check-in (runs `check-in`) | `<id>` | `<cron, UTC>` | `<enabled / paused>` |
 
 The check-in reconciles this table with the live routines on every check-in.

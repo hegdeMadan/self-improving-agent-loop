@@ -1,6 +1,6 @@
 ---
 name: retro
-description: Grades a finished feature. The health check (every feature) checks the live product as the project defines it. The learning retro (when ruled) scores the last retro's changes, finds where the loop went wrong, and writes one-line rules into the project's lessons - the loop's self-improvement.
+description: Grades a finished feature. The health check (every feature) checks the live product as the project defines it. The learning retro (when run-loop names a reason) scores the last retro's changes, finds where the loop went wrong, and writes one-line rules into the project's lessons - the loop's self-improvement.
 model: opus
 ---
 
